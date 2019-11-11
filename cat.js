@@ -1,6 +1,10 @@
-const fs = require('fs');
+const fs = require("fs");
 
-module.exports = (fileName) => {
-  console.log(fs.readFileSync(fileName , "utf8"));
-  process.stdout.write("\nprompt > ");
-}
+module.exports = fileName => {
+  fs.readFile(fileName, "utf8", (err, data) => {
+    if (err) throw err;
+    console.log(data);
+
+    process.stdout.write("\nprompt > ");
+  });
+};
